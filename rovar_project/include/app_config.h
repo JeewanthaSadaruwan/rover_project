@@ -12,7 +12,7 @@
 #define LORA_MOSI           23
 #define LORA_CS             5
 #define LORA_RST            14
-#define LORA_DIO0           2
+#define LORA_DIO0           26
 
 // ========== LORA CONFIGURATION ==========
 #ifndef LORA_FREQUENCY

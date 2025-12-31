@@ -12,8 +12,8 @@
 #define DHT_TYPE DHT11
 DHT dht(DHT_PIN, DHT_TYPE);
 
-// MQ2 Gas Sensor
-#define MQ2_PIN 32
+// MQ Gas Sensor (A0 connected to GPIO 34)
+#define MQ_GAS_PIN 34
 
 // GPS Module
 #define GPS_RX_PIN 16
@@ -39,8 +39,8 @@ bool initSensors() {
   Serial.println("[Sensors] Initializing sensors...");
   Serial.print("[Sensors] DHT pin: GPIO");
   Serial.println(DHT_PIN);
-  Serial.print("[Sensors] MQ2 pin: GPIO");
-  Serial.println(MQ2_PIN);
+  Serial.print("[Sensors] MQ Gas pin: GPIO");
+  Serial.println(MQ_GAS_PIN);
   Serial.print("[Sensors] GPS RX: GPIO");
   Serial.print(GPS_RX_PIN);
   Serial.print(" TX: GPIO");
@@ -141,8 +141,8 @@ SensorReadings readAllSensors() {
     readings.humidity = 0;
   }
   
-  // Read MQ2 Gas Sensor (analog value 0-4095)
-  int gasValue = analogRead(MQ2_PIN);
+  // Read MQ Gas Sensor (analog value 0-4095)
+  int gasValue = analogRead(MQ_GAS_PIN);
   // Convert 12-bit ADC (0-4095) to percentage (0-100)
   readings.airQuality = (gasValue / 4095.0) * 100.0;
   
@@ -159,6 +159,20 @@ SensorReadings readAllSensors() {
     dummySoilMoisture = constrain(dummySoilMoisture, 30.0, 70.0);  // Keep between 30-70%
   }
   readings.soilMoisture = dummySoilMoisture;
+  
+  // ===== SOIL PH (DUMMY DATA FOR NOW) =====
+  // Generates pseudo-random dummy data between 5.0-7.0
+  // Replace with actual sensor reading when pH sensor is connected
+  static unsigned long lastPHUpdate = 0;
+  static float dummySoilPH = 6.0;
+  
+  if (millis() - lastPHUpdate > 1000) {  // Update every second
+    lastPHUpdate = millis();
+    // Generate dummy data with slight variation
+    dummySoilPH += (random(-5, 5) / 50.0);  // ±0.1 variation
+    dummySoilPH = constrain(dummySoilPH, 5.0, 7.0);  // Keep between 5-7
+  }
+  readings.soilPH = dummySoilPH;
   
   // Read GPS location
   if (gps.location.isValid()) {

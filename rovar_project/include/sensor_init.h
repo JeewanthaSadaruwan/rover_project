@@ -9,6 +9,7 @@ struct SensorReadings {
   float humidity;         // DHT11 humidity (%)
   float airQuality;       // MQ2 gas level (%)
   float soilMoisture;     // Soil moisture (%) - DUMMY DATA FOR NOW
+  float soilPH;           // Soil pH (5-7) - DUMMY DATA FOR NOW
   float latitude;         // GPS latitude
   float longitude;        // GPS longitude
   float batteryVoltage;   // Battery voltage (V)

@@ -139,7 +139,9 @@ void loop() {
     Serial.print(readings.airQuality, 1);
     Serial.print("% | Soil: ");
     Serial.print(readings.soilMoisture, 1);
-    Serial.print("% | GPS: ");
+    Serial.print("% | pH: ");
+    Serial.print(readings.soilPH, 1);
+    Serial.print(" | GPS: ");
     Serial.print(readings.latitude, 6);
     Serial.print(",");
     Serial.println(readings.longitude, 6);
@@ -157,11 +159,11 @@ void loop() {
     Serial.print(",");
     Serial.println(gyroZ, 2);
     
-    // Transmit via LoRa (TEMP, HUM, GAS, SOIL, GPS, and IMU)
+    // Transmit via LoRa (TEMP, HUM, GAS, SOIL, PH, GPS, and IMU)
     char loraPayload[256];
     snprintf(loraPayload, sizeof(loraPayload),
-      "TEMP:%.1f,HUM:%.1f,GAS:%.1f,SOIL:%.1f,LAT:%.6f,LNG:%.6f,AX:%.2f,AY:%.2f,AZ:%.2f,GX:%.2f,GY:%.2f,GZ:%.2f",
-      readings.temperature, readings.humidity, readings.airQuality, readings.soilMoisture,
+      "TEMP:%.1f,HUM:%.1f,GAS:%.1f,SOIL:%.1f,PH:%.1f,LAT:%.6f,LNG:%.6f,AX:%.2f,AY:%.2f,AZ:%.2f,GX:%.2f,GY:%.2f,GZ:%.2f",
+      readings.temperature, readings.humidity, readings.airQuality, readings.soilMoisture, readings.soilPH,
       readings.latitude, readings.longitude,
       accelX, accelY, accelZ, gyroX, gyroY, gyroZ);
     

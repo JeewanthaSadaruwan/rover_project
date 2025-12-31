@@ -1,0 +1,151 @@
+{
+  "rovers": {
+    "rover_01": {
+      "commands": {
+        "return_home": false,
+        "timestamp": 1735660800000,
+        "trigger_read": false
+      },
+      "history": {
+        "reading_001": {
+          "gps": {
+            "lat": 6.927,
+            "lng": 79.861
+          },
+          "sensors": {
+            "dht": {
+              "humidity": 68.5,
+              "temp": 27.2
+            },
+            "gas": {
+              "level": 12.5,
+              "status": "SAFE"
+            },
+            "soil": {
+              "moisture": 45.6,
+              "ph": 6.2
+            },
+            "imu": {
+              "accel": {
+                "x": -2.04,
+                "y": -0.44,
+                "z": 9.92
+              },
+              "gyro": {
+                "x": -0.01,
+                "y": 0.03,
+                "z": -0.00
+              }
+            }
+          },
+          "timestamp": 1735660800
+        },
+        "reading_002": {
+          "gps": {
+            "lat": 6.9271,
+            "lng": 79.8611
+          },
+          "sensors": {
+            "dht": {
+              "humidity": 66.2,
+              "temp": 27.8
+            },
+            "gas": {
+              "level": 15.3,
+              "status": "SAFE"
+            },
+            "soil": {
+              "moisture": 48.2,
+              "ph": 6.1
+            },
+            "imu": {
+              "accel": {
+                "x": -1.98,
+                "y": -0.52,
+                "z": 9.88
+              },
+              "gyro": {
+                "x": -0.02,
+                "y": 0.01,
+                "z": 0.01
+              }
+            }
+          },
+          "timestamp": 1735661100
+        },
+        "reading_003": {
+          "gps": {
+            "lat": 6.9272,
+            "lng": 79.8612
+          },
+          "sensors": {
+            "dht": {
+              "humidity": 64.8,
+              "temp": 28.1
+            },
+            "gas": {
+              "level": 11.2,
+              "status": "SAFE"
+            },
+            "soil": {
+              "moisture": 52.1,
+              "ph": 6.4
+            },
+            "imu": {
+              "accel": {
+                "x": -2.10,
+                "y": -0.38,
+                "z": 9.95
+              },
+              "gyro": {
+                "x": 0.00,
+                "y": 0.02,
+                "z": -0.01
+              }
+            }
+          },
+          "timestamp": 1735661400
+        }
+      },
+      "latest": {
+        "device_id": "rover_01",
+        "gps": {
+          "lat": 6.9272,
+          "lng": 79.8612
+        },
+        "sensors": {
+          "dht": {
+            "humidity": 64.8,
+            "temp": 28.1
+          },
+          "gas": {
+            "level": 11.2,
+            "status": "SAFE"
+          },
+          "soil": {
+            "moisture": 52.1,
+            "ph": 6.4
+          },
+          "imu": {
+            "accel": {
+              "x": -2.10,
+              "y": -0.38,
+              "z": 9.95
+            },
+            "gyro": {
+              "x": 0.00,
+              "y": 0.02,
+              "z": -0.01
+            }
+          }
+        },
+        "timestamp": 1735661400
+      },
+      "status": {
+        "battery": 85,
+        "is_online": true,
+        "last_seen": 1735661400
+      }
+    }
+  }
+}

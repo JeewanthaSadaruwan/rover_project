@@ -65,7 +65,7 @@ bool initSDCard() {
   }
   
   // Write CSV header
-  file.println("Timestamp,Temperature,Humidity,Gas,SoilMoisture,Latitude,Longitude,AccelX,AccelY,AccelZ,GyroX,GyroY,GyroZ");
+  file.println("Timestamp,Temperature,Humidity,Gas,SoilMoisture,SoilPH,Latitude,Longitude,AccelX,AccelY,AccelZ,GyroX,GyroY,GyroZ");
   file.close();
   
   Serial.println("[SD Card] Ready! CSV file created with header");
@@ -82,16 +82,16 @@ bool storeLoRaData(const char* sensorData) {
   }
   
   // Parse the sensor data
-  // Format: TEMP:27.4,HUM:78.7,GAS:0.0,SOIL:45.6,LAT:0.000000,LNG:0.000000,AX:-2.04,AY:-0.44,AZ:9.92,GX:-0.01,GY:0.03,GZ:-0.00
-  float temp = 0, hum = 0, gas = 0, soil = 0, lat = 0, lng = 0;
+  // Format: TEMP:27.4,HUM:78.7,GAS:0.0,SOIL:45.6,PH:6.2,LAT:0.000000,LNG:0.000000,AX:-2.04,AY:-0.44,AZ:9.92,GX:-0.01,GY:0.03,GZ:-0.00
+  float temp = 0, hum = 0, gas = 0, soil = 0, ph = 0, lat = 0, lng = 0;
   float ax = 0, ay = 0, az = 0, gx = 0, gy = 0, gz = 0;
   
   // Parse the data using sscanf
   int parsed = sscanf(sensorData, 
-    "TEMP:%f,HUM:%f,GAS:%f,SOIL:%f,LAT:%f,LNG:%f,AX:%f,AY:%f,AZ:%f,GX:%f,GY:%f,GZ:%f",
-    &temp, &hum, &gas, &soil, &lat, &lng, &ax, &ay, &az, &gx, &gy, &gz);
+    "TEMP:%f,HUM:%f,GAS:%f,SOIL:%f,PH:%f,LAT:%f,LNG:%f,AX:%f,AY:%f,AZ:%f,GX:%f,GY:%f,GZ:%f",
+    &temp, &hum, &gas, &soil, &ph, &lat, &lng, &ax, &ay, &az, &gx, &gy, &gz);
   
-  if (parsed < 12) {
+  if (parsed < 13) {
     Serial.print("[SD Card] Parse error - only got ");
     Serial.print(parsed);
     Serial.println(" fields");
@@ -118,6 +118,8 @@ bool storeLoRaData(const char* sensorData) {
   file.print(gas, 2);
   file.print(",");
   file.print(soil, 2);
+  file.print(",");
+  file.print(ph, 2);
   file.print(",");
   file.print(lat, 6);
   file.print(",");
