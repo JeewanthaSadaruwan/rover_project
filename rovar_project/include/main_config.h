@@ -23,8 +23,6 @@
 #define AIR_DHT_PIN         4   // DHT22 data pin
 #define AIR_BMP_SDA         21  // I2C SDA for BMP280
 #define AIR_BMP_SCL         22  // I2C SCL for BMP280
-#define AIR_CO2_RX          26
-#define AIR_CO2_TX          27
 
 // ========== GPS PINS ==========
 #define GPS_RX              13

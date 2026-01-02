@@ -8,8 +8,8 @@
 
 // ==================== WiFi CREDENTIALS ====================
 // Replace with your WiFi network name and password
-#define WIFI_SSID           "XYZ"
-#define WIFI_PASSWORD       "12345678"
+#define WIFI_SSID           "abc"
+#define WIFI_PASSWORD       "jeewantha"
 
 // ==================== FIREBASE CREDENTIALS ====================
 // From google-services.json

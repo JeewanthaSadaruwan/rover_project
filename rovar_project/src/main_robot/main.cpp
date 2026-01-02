@@ -89,6 +89,9 @@ void setup() {
 void loop() {
   unsigned long currentTime = millis();
   
+  // Process GPS data continuously (important for GPS fix)
+  processGPS();
+  
   // Check if remote is connected
   static bool remoteStatusPrinted = false;
   if (isRemoteConnected() && !remoteStatusPrinted) {
@@ -144,7 +147,9 @@ void loop() {
     Serial.print(" | GPS: ");
     Serial.print(readings.latitude, 6);
     Serial.print(",");
-    Serial.println(readings.longitude, 6);
+    Serial.print(readings.longitude, 6);
+    Serial.print(" | Sats: ");
+    Serial.println(getGPSSatellites());
     
     Serial.print("[IMU] Accel: ");
     Serial.print(accelX, 2);

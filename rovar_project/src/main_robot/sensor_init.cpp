@@ -186,6 +186,21 @@ SensorReadings readAllSensors() {
   return readings;
 }
 
+// Process GPS data - call this frequently in the main loop
+void processGPS() {
+  while (gpsSerial.available() > 0) {
+    gps.encode(gpsSerial.read());
+  }
+}
+
+// Get number of GPS satellites in view
+int getGPSSatellites() {
+  if (gps.satellites.isValid()) {
+    return gps.satellites.value();
+  }
+  return 0;
+}
+
 void printSensorStatus() {
   Serial.println("\n========== SENSOR STATUS ==========");
   Serial.print("Temperature:     ");

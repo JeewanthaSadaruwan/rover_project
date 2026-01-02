@@ -20,5 +20,7 @@ bool initSensors();
 bool checkSensorsReady();
 SensorReadings readAllSensors();
 void printSensorStatus();
+void processGPS();  // Call this frequently to update GPS data
+int getGPSSatellites();  // Get number of satellites in view
 
 #endif // SENSOR_INIT_H
